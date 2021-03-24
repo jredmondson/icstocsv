@@ -4,9 +4,9 @@ A program for converting Google calendars to csv format
 # installation
 * Download python to your computer (https://www.python.org/downloads/)
   * Install to your path to make calling python easier
-  * Install vobject and csv modules via pip
+  * Install vobject module via pip
 ```
-pip install vobject csv
+pip install vobject
 ```
 * Download the file icstocsv.py to your computer
   * Recommend saving to /scripts/icstocsv.py
