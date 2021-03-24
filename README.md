@@ -28,5 +28,7 @@ python \scripts\icstocsv.py \calendars\mycal.ics \calendars\mycal.csv
 * Call the script with no arguments to get usage
 ```
 python icstocsv.py
-icstocsv usage: icstocsv [ical file] [csv output file]
+icstocsv usage: icstocsv ical [csv output file]
+
+  if no csv out provided, then saves at ical.csv
 ```

@@ -2,11 +2,13 @@ import vobject
 import csv
 import sys
 import io
+import os
 
 csv_filename = "calendar.csv"
 
 if len(sys.argv) == 1:
-  print(f"icstocsv usage: icstocsv [ical file] [csv output file]")
+  print(f"icstocsv usage: icstocsv ical [csv output file]\n")
+  print(f"  if no csv out provided, then saves at ical.csv")
   quit()
 
 if len(sys.argv) > 1:    
@@ -14,6 +16,9 @@ if len(sys.argv) > 1:
   
   if len(sys.argv) > 2:
     csv_filename = sys.argv[2]
+  else:
+    source = os.path.splitext(ics_filename)
+    csv_filename = source[0] + ".csv"
 
 with open(csv_filename, mode='w', encoding="utf-8") as csv_out:
   csv_writer = csv.writer(csv_out, delimiter=',', quotechar='"', quoting=csv.QUOTE_MINIMAL)
