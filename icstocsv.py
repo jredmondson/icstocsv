@@ -22,7 +22,7 @@ if len(sys.argv) > 1:
 
 with open(csv_filename, mode='w', encoding="utf-8") as csv_out:
   csv_writer = csv.writer(csv_out, delimiter=',', quotechar='"', quoting=csv.QUOTE_MINIMAL)
-  csv_writer.writerow(['WHAT', 'WHO', 'FROM', 'TO', 'DESCRIPTION'])
+  csv_writer.writerow(['WHAT', 'WHO', 'FROM', 'TO', 'DESCRIPTION', 'LOCATION'])
 
   # read the data from the file
   #data = open(ics_filename).read()
@@ -33,7 +33,7 @@ with open(csv_filename, mode='w', encoding="utf-8") as csv_out:
     for component in cal.components():
       if component.name == "VEVENT":
 
-        row = ["", "", "", "", ""]
+        row = ["", "", "", "", "", ""]
         
         if hasattr(component, 'summary'):
         #if "summary" in component:
@@ -58,6 +58,10 @@ with open(csv_filename, mode='w', encoding="utf-8") as csv_out:
         if hasattr(component, 'description'):
         #if "description" in component:
           row[4] = component.description.valueRepr()
+      
+        if hasattr(component, 'location'):
+        #if "description" in component:
+          row[5] = component.location.valueRepr()
       
         # write to csv
         csv_writer.writerow(row)
